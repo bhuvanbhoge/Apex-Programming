@@ -1,0 +1,67 @@
+public class AccountRecordCreation {
+    
+    public static Id insertAcc(String name, String active, String industry, Integer numOfEmp, String phone, String type){
+        Account acc1 = new Account();
+        acc1.name = name;
+        acc1.Active__c = active;
+
+        acc1.NumberOfEmployees = numOfEmp;
+        acc1.Phone = phone;
+        acc1.Type = type;
+        
+        insert acc1;   // insert an account 
+        
+        return acc1.Id; // display id of created account
+    } 
+    
+    public static Id insertCon(){
+        Id accId = insertAcc('Red Apple', 'Yes', 'Agriculture', 14, '908769873','Prospect');
+        
+        Contact con1 = new Contact(FirstName = 'Acc 101' , LastName = 'Con 001');
+        con1.AccountId = accId;
+        insert con1;
+        
+        return con1.Id;
+    }
+    
+    public static void accWithConOppCase(String name, String active, String industry, Integer numOfEmp, String phone, String type){
+        Account acc1 = new Account();
+        acc1.name = name;
+        acc1.Active__c = active;
+        acc1.Industry = industry;
+        acc1.NumberOfEmployees = numOfEmp;
+        acc1.Phone = phone;
+        acc1.Type = type;
+        
+        insert acc1;   // insert an account 
+        System.debug(acc1.Name + ' ' + acc1.Id + ' is created');
+        
+        Contact con1 = new Contact();
+        con1.FirstName = acc1.Name;
+        con1.LastName = 'Con1';
+        con1.Email = 'ex@mple.com';
+        con1.AccountId = acc1.Id;
+        
+        insert con1;   // insert related contact
+        System.debug(con1.FirstName + ' ' + con1.LastName + ' ' + con1.Id + ' is created');
+        
+        Opportunity opp1 = new Opportunity();
+        opp1.Name = acc1.Name +' opp1';
+        opp1.CloseDate = Date.today();
+        opp1.StageName = 'Needs Analysis';
+        opp1.AccountId = acc1.Id;
+        
+        insert opp1;    // insert related opportunity
+        System.debug(opp1.Name + ' ' + opp1.Id + ' is created'); 
+        
+        Case case1 = new Case();
+        case1.status = 'Working';
+        case1.Origin = 'Web';
+        case1.ContactId = con1.Id;
+        case1.AccountId = acc1.Id;
+        
+        insert case1;   //Insert related case
+        System.debug('Case created with status : ' + case1.Status);
+        
+    }
+}
