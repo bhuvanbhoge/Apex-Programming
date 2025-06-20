@@ -1,0 +1,57 @@
+public class MyFirstProgram {
+    //static block
+    static{
+        System.debug('good morning(from static block)');
+    }
+    //block
+    {
+        System.debug('Ki Haal(from block)');
+    }
+    //Default constructor
+    public MyFirstProgram(){
+        System.debug('Stay Hydrated(from Default constructor)');
+    }
+    //Parameterised Constructor
+    MyFirstProgram(String a){
+        System.debug(a+'(from Parameterised Constructor)');
+    }
+    //////////////////////////////
+    
+    //Main Method
+    public static void main(){
+        System.debug('Hello Ji(normal System.debug)');
+        
+        System.debug('Area of rectangle ' + rectangleArea());
+        
+        MyFirstProgram obj1 = new MyFirstProgram();
+        System.debug('Addition is ' + obj1.addition(5,5));
+        
+        MyFirstProgram obj2 = new MyFirstProgram('Khana Kha liya?(from parameterized contructor)');
+        
+        MyFirstProgram obj3 = new MyFirstProgram(2025,2002);
+        System.debug('Age is ' + obj3.age());
+        
+    }
+    //static method
+    public static double rectangleArea(){
+        double length=5.5, breadth=6.2;
+        return length*breadth;
+    }
+    //Method
+    public Integer addition(Integer a, Integer b){
+        return a+b;
+    }
+    
+    //Global 
+    Integer currentYear, birthYear;
+    //Parameterized constructor
+    MyFirstProgram(Integer a, Integer b){
+        currentYear = a;
+        birthYear = b;
+    }
+    
+    public Integer age(){
+        return currentYear-birthYear;
+    }
+    
+}
