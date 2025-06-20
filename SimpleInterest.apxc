@@ -1,0 +1,6 @@
+public class SimpleInterest {
+    public static void main(){
+        decimal principle = 100000, interest = 12, years = 4;
+        System.debug('Simple interest for amount '+ principle + 'rs. at interest of '+ interest+ '% for ' + years + 'yrs is '+ (principle*interest*years)/100);
+    }
+}
