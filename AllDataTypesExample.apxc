@@ -1,0 +1,64 @@
+public class AllDataTypesExample {
+    public static void main(){
+        Boolean isActive = true;
+        System.debug('Status : '+isActive);
+        
+        Integer age = 23;
+        System.debug('Age : ' + age);
+        
+        Decimal tShirtprice = 499.99;
+        System.debug('tShirtprice : '+ tShirtprice);
+        
+        Double Salary = 40000.00;
+        System.debug('Salary'+ Salary);
+        
+        Long population = 45000000000L;
+        System.debug('population : '+ population);
+        
+        String name = 'Bhuvan';
+        System.debug('name : ' + name);
+        
+        Date todayD = Date.today();
+        System.debug('today\'s date : '+todayD);
+        
+        Date dob = Date.newInstance(2002,08,02);
+        System.debug('dob : '+ dob);
+        
+        Time wakeupAt = Time.newInstance(8,00,00,0);
+        System.debug('wakeupAt : '+ wakeupAt);
+        
+        DateTime currentDateTime = DateTime.now();
+        System.debug('currentDateTime : '+currentDateTime);
+        
+        DateTime joiningDate = DateTime.newInstance(2025,04,14,10,00,00);
+        System.debug('joiningDate : ' + joiningDate);
+        
+        Id accId = '001dM00002ZZ0b5QAD';
+        System.debug('accId : '+ accId);
+        
+        Blob b = Blob.valueOf('Helloow');
+        System.debug('Blob value : '+ b);
+    }
+    
+    public static void primeNumber(Integer n){
+        boolean isPrime = false;
+        if(n<2){
+            System.debug('Not Prime number');
+            return;
+        }else if(n==2){
+            System.debug('Prime number');
+            return;
+        }else if(Math.mod(n,2)==0){
+            System.debug('Not Prime number');
+            return;
+        }else{
+            for(Integer i=3;i<=Math.sqrt(n);i++){
+                if(Math.mod(n,i)==0){
+                    System.debug('Not Prime number');
+                    return;
+                }
+            }
+        }
+        System.debug('Prime number');
+    }
+}
